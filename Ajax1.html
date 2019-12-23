@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let xhr = new XMLHttpRequest();
+    let url = "https://api.openweathermap.org/data/2.5/weather?APPID=4b5774e9f3d2a07b84f0f2f88e486224&q=London";
+
+    xhr.open("GET", url, true);
+    xhr.send();
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let objects =JSON.parse(xhr.responseText);
+        console.log(objects.weather[0].description);
+      }
+    }
+  </script>
+</body>
+</html>
